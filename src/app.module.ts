@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EventModule } from './event/event.module';
 import { Event } from './event/entities/event.entity';
-
+import * as fs from 'fs';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -24,6 +24,7 @@ dotenv.config();
       logging: true,
       ssl: {
         rejectUnauthorized: false,
+        ca:fs.readFileSync('./ca.pem').toString()
       }
     }),
     EventModule,
