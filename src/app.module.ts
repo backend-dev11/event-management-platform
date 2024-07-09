@@ -22,6 +22,9 @@ dotenv.config();
       database: process.env.DB_DATABASE,
       synchronize: true,
       logging: true,
+      ssl: {
+        rejectUnauthorized: false,
+      }
     }),
     EventModule,
   ],
