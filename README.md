@@ -15,4 +15,3 @@
 6.create event dto file
 
 7.implement logic for event crud operation
-
