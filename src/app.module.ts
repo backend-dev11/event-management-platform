@@ -5,17 +5,21 @@ import { AppService } from './app.service';
 import { EventModule } from './event/event.module';
 import { Event } from './event/entities/event.entity';
 
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      password: '123',
-      username: 'postgres',
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT, 10),
+      password: process.env.DB_PASSWORD,
+      username: process.env.DB_USER,
       entities: [Event],
-      database: 'event',
+      database: process.env.DB_DATABASE,
       synchronize: true,
       logging: true,
     }),
